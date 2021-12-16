@@ -2,7 +2,7 @@ import type { RequestHandler } from "@sveltejs/kit"
 
 let todos: Todo[] = [];
 
-export const get: RequestHandler = () => {
+export let get: RequestHandler = () => {
   return {
     status: 200,
     body: todos
