@@ -52,8 +52,8 @@ export const load: Load = async ( { fetch } ) => {
   </div>
 
   {#each todos as todo}
-  <div class="w-full flex items-center gap-x-3 justify-center">
-    <Todoitem value={todo.text} />
-  </div>
+    <div class="w-full flex items-center gap-x-3 justify-center">
+      <Todoitem value={todo.text} />
+    </div>
   {/each}
 </article>

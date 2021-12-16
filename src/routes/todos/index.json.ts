@@ -5,7 +5,7 @@ let todos: Todo[] = [];
 export let get: RequestHandler = () => {
   return {
     status: 200,
-    body: todos
+    body : todos
   }
 }
 
