@@ -23,10 +23,27 @@
 
 <script lang="ts">
   import type { Todo } from "$lib/todo.type";
+  import { flip } from "svelte/animate"
+  import { fade } from "svelte/transition";
   import { enhance } from "$lib/actions/enhance";
+
+	function fadeUp(node, { duration }) {
+		return {
+			duration,
+			css: (t,u) => {				
+				return `
+            opacity: ${t};
+						transform: scale(${t}) translateY(${u * 70}px);
+					`
+			}
+		};
+	}
+
+  
   import AddBtn from "$lib/components/btns/add.svelte";
-  // import CompleteBtn from "$lib/components/btns/complete.svelte"
+
   import Todoitem from "$lib/components/Todoitem.svelte";
+  
   export let tasks: Todo[];
 
   const processNewTodosResult = async ( res: Response,form :HTMLFormElement ) => {
@@ -47,14 +64,14 @@
 
 </script>
 
-<article class="w-full px-10 flex flex-col items-center gap-y-6">
+<article class="w-full px-10 grid grid-cols-6 gap-y-6 place-items-center">
   <form
-    class="w-full flex items-center gap-x-3 justify-center"
+    class="w-full col-span-full flex items-center gap-x-3 justify-center"
     action="/todos.json"
     method="post"
     use:enhance={{result:processNewTodosResult}}
   >
-    <div class="w-7 " />
+    <div class="w-7" />
     <input
       type="text"
       name="task"
@@ -65,9 +82,11 @@
     <AddBtn />
   </form>
 
-  {#each tasks as todo}
-    <div class="w-full flex items-center gap-x-3 justify-center"  >
-      <Todoitem details={todo} {processDeletedItem} {processCheckedItem} />
-    </div>
-  {/each}
+  <div class="col-span-full flex w-full flex-col gap-y-6">
+    {#each [...tasks.filter(t => t.done),...tasks.filter(t => !t.done)] as todo (todo._id)}
+      <div animate:flip={{delay:200}} in:fadeUp={{duration:200}} out:fade={{duration:200}} class="w-full flex items-center gap-x-3 justify-center"  >
+        <Todoitem details={todo} {processDeletedItem} {processCheckedItem} />
+      </div>
+    {/each}
+  </div>
 </article>
