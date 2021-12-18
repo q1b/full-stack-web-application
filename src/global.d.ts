@@ -1,6 +1,4 @@
 /// <reference types="@sveltejs/kit" />
-type Todo = {
-  date: Date,
-  text:String,
-  done:Boolean
+interface ImportMetaEnv {
+  VITE_MONGODO_URI: string;
 }

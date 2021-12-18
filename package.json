@@ -21,6 +21,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@unocss/reset": "^0.16.3"
+    "@unocss/reset": "^0.16.3",
+    "mongodb": "^4.2.2"
   }
 }

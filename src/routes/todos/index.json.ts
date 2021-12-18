@@ -1,26 +1,16 @@
 import type { RequestHandler } from "@sveltejs/kit"
 
-let todos: Todo[] = [];
+import { api } from "./_api";
 
-export let get: RequestHandler = () => {
-  return {
-    status: 200,
-    body : todos
-  }
+export const get: RequestHandler = (request) => {
+  return api(request);
 }
 
-
-export const post: RequestHandler<{}, FormData> = ( request ) =>  {
-  // name attr of input 
-  todos.push({
-    date: new Date(),
-    text: request.body.get("text"),
-    done: false,
+export const post: RequestHandler<{}, FormData> = (request) => {
+  return api(request, {
+    created_at: new Date(),
+    priority:1,
+    task: request.body.get("task"),
+    done: false
   });
-  return {
-    status: 303,
-    headers:{
-      location: "/"
-    }
-  }
 }
