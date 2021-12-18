@@ -1,4 +1,6 @@
-import cloudflare from '@sveltejs/adapter-cloudflare'
+import netlify from "@sveltejs/adapter-netlify"
+// import netlify from ' @sveltejs/adapter-netlify'
+// import cloudflare from '@sveltejs/adapter-cloudflare'
 // import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 import UnoCss from 'unocss/vite'
@@ -11,7 +13,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: cloudflare(),
+		adapter: netlify(),
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 		vite: {
