@@ -20,11 +20,7 @@
     <h1 class="font-code text-7xl font-bold bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent leading-snug">Todo App</h1>
     <slot/>
   </main>
-  <div style="
-    mask-image:linear-gradient(180deg, white, rgba(255,255,255,0));
-    background-image: url(/img/grid.svg);
-  "
-  class="absolute inset-0 bg-center"></div>
-  <!-- <p class="font-code fixed bottom-4 left-4 font-bold bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent leading-snug">made with sveltekit Postgres. </p> -->
+  <div style="mask-image:linear-gradient(180deg, white, rgba(255,255,255,0));background-image: url(/img/grid.svg);" class="absolute inset-0 bg-center"></div>
+  <!-- <p class="font-code fixed bottom-4 left-4 font-bold bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent leading-snug">made with sveltekit MongoDb. </p> -->
 </body>
 </html>
