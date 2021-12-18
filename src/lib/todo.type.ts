@@ -1,7 +1,7 @@
 import type { ObjectId } from 'mongodb' 
 
 export type Todo = {
-  _id ?: ObjectId,
+  _id ?: string,
   task: string,
   created_on:Date,
   priority:number,

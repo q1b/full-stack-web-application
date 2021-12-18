@@ -17,7 +17,7 @@
 </head>
 <body class="">
   <main class="z-10 relative flex flex-col items-center gap-y-10 pt-10">
-    <h1 class="font-code text-7xl font-bold bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent leading-snug">Todo App</h1>
+    <h1 class="font-code sm:text-2xl md:text-7xl  font-bold bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent leading-snug">Todo App</h1>
     <slot/>
   </main>
   <div style="mask-image:linear-gradient(180deg, white, rgba(255,255,255,0));background-image: url(/img/grid.svg);" class="absolute inset-0 bg-center"></div>
