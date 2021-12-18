@@ -82,7 +82,7 @@
     <AddBtn />
   </form>
 
-  <div class="col-span-full flex w-full flex-col gap-y-6">
+  <div class="mt-10 col-span-full flex w-full flex-col gap-y-6">
     {#each [...tasks.filter(t => t.done),...tasks.filter(t => !t.done)] as todo (todo._id)}
       <div animate:flip={{delay:200}} in:fadeUp={{duration:200}} out:fade={{duration:200}} class="w-full flex items-center gap-x-3 justify-center"  >
         <Todoitem details={todo} {processDeletedItem} {processCheckedItem} />
