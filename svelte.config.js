@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
+import cloudflare from '@sveltejs/adapter-cloudflare'
+// import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 import UnoCss from 'unocss/vite'
 import unoConfig from './uno.config.js';
@@ -10,7 +11,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter(),
+		adapter: cloudflare(),
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 		vite: {
