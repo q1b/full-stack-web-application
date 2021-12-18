@@ -1,12 +1,16 @@
 <script lang="ts">
+  import { enhance } from "$lib/actions/enhance";
+
   import type { Todo } from "$lib/todo.type";
   import UnCompleteBtn from "./btns/undone.svelte";
   import CompleteBtn from "./btns/complete.svelte";
   import RemoveBtn from "./btns/remove.svelte";
   export let details : Todo;
+  export let processDeletedItem;
+  export let processCheckedItem;
 </script>
 
-<form action="/todos/{details._id}.json?_method=patch" method="post">
+<form action="/todos/{details._id}.json?_method=patch" method="post" use:enhance={{ result:processCheckedItem }} >
   <input type="hidden" name="done" value="{ details.done ? '' : 'true' }" />
   {#if details.done}
   <UnCompleteBtn />  
@@ -21,6 +25,6 @@
   {details.task}
 </div>
 
-<form action="/todos/{details._id}.json?_method=delete" method="post">
+<form action="/todos/{details._id}.json?_method=delete" method="post" use:enhance={{result:processDeletedItem}}>
   <RemoveBtn />
 </form>

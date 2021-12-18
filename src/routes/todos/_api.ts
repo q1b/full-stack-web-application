@@ -18,25 +18,26 @@ export const api = async (request: Request, data?: Record<string, unknown>) => {
       break;
     case "POST":
       const todo = data;
-      body = await collection.insertOne(todo);
+      await collection.insertOne(todo);
+      body = await collection.find().toArray();
       status = 201;
       break;
     case "DELETE":
-      body = await collection.deleteOne({ _id: new ObjectId( request.params.uid ) });
+      await collection.deleteOne({ _id: new ObjectId( request.params.uid ) });
+      body = await collection.find().toArray();
       status = 200;
       break;
     case "PATCH":
-      body = await collection.updateOne(
+      await collection.updateOne(
         {
           _id: new ObjectId( request.params.uid ) 
         }, {
           $set: { done: data.done }
         }
       );
-      // const t = await collection.find().toArray();
+      body = await collection.find().toArray();
       status = 200;
       break;
-
     default:
       break;
   }

@@ -1,7 +1,6 @@
 export const enhance = (form: HTMLFormElement, { result }) => {
-  // Form Mounted
-  const handleSumbit = async (e: Event) => {
-    e.preventDefault(); //sending to backend
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault();
 
     try {
       const body = new FormData(form);
@@ -14,21 +13,20 @@ export const enhance = (form: HTMLFormElement, { result }) => {
       });
 
       if (res.ok) {
-        console.log("API RESPONSE");
-        result(res);
+        result(res, form);
       } else {
-        console.log("FETCH ERROR :- ", res.text());
+        console.error("Fetch error: ", await res.text());
       }
     } catch (error) {
-      console.error("FORM ERRROR :-", error);
+      console.error("Could not submit the form: ", error);
     }
   };
 
-  form.addEventListener("sumbit", handleSumbit);
+  form.addEventListener("submit", handleSubmit);
 
   return {
     destroy() {
-      form.removeEventListener("submit", handleSumbit);
+      form.removeEventListener("submit", handleSubmit);
     },
   };
 };
