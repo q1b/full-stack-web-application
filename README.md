@@ -1,2 +1,2 @@
 # Todo appilcation
-## made with svelte sveltkit mongoDB UNOCSS 
+## made with svelte sveltkit LocalStorage
