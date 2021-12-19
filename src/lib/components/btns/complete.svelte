@@ -1,4 +1,8 @@
-<button class="relative group">
+<script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  let dispatch = createEventDispatcher();
+</script>
+<button on:click={()=>{ dispatch('complete') }} class="relative group">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="inactive-svg text-green-400"
